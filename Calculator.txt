@@ -1,0 +1,41 @@
+import java.util.*;
+public class Calculator
+{
+	public static void main(String args[])
+	{
+	int s1,s2,s3,s4,total,avg;
+	Scanner myInput=new Scanner(System.in);
+	System.out.println("Enter DBMS marks");
+	s1=myInput.nextInt();
+	System.out.println("Enter m3 marks");
+	s2=myInput.nextInt();
+	System.out.println("Enter FDS marks");
+	s3=myInput.nextInt();
+	System.out.println("Enter Java marks");
+	s4=myInput.nextInt();
+	total=s1+s2+s3+s4;
+	System.out.println("Total marks are"+total);
+	avg=total/4;
+	System.out.println("Your average is"+avg);
+	if(avg>=90)
+	{
+	System.out.println("Your grade is A+");
+	}
+	if(avg<90&&avg>80)
+	{
+	System.out.println("Your grade is A");
+	}
+	if(avg<80&&avg>75)
+	{
+	System.out.println("Your grade is B");
+	}
+	if(avg<75&&avg>70)
+	{
+	System.out.println("Your grade is C");
+	}
+	if(avg<70)
+	{
+	System.out.println("Your grade is D");
+	}
+	}
+}
