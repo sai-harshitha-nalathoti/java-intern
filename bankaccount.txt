@@ -1,0 +1,110 @@
+
+import java.util.*;
+class BankAccount
+{
+	private double bal;
+	public BankAccount(double initialbal)
+	{
+	this.bal=initialbal;
+	}
+	public double showBal()
+	{
+	return bal;
+	}
+	public void deposit(double amount)
+	{
+	if(amount>0)
+	{
+	bal+=amount;
+	System.out.println("Deposited amount:"+amount);
+	}
+	else
+	{
+	System.out.println("Invalid amount .Enter greater than zero");
+	}
+	}
+	public void withdraw(double amount)
+	{
+	if(amount>0 && bal>=amount)
+	{
+	bal-=amount;
+	System.out.println("withdrawn:"+amount);
+	}
+	else if(amount<=0)
+	{
+	System.out.println("Invalid amount.Enter greater than zero");
+	}
+	else
+	{
+	System.out.println("Insufficieny Balance");
+	}
+	}
+}
+class ATM
+{
+private BankAccount bankAccount;
+public ATM(BankAccount account)
+{
+this.bankAccount=account;
+}
+public void run()
+{
+Scanner myinput=new Scanner(System.in);
+int option;
+do
+{
+System.out.println("Select options");
+System.out.println("1.Balance Enquiry");
+System.out.println("2.Deposit");
+System.out.println("3.Withdraw");
+System.out.println("4.Exit");
+System.out.println("Enter your choice");
+option=myinput.nextInt();
+switch(option)
+{
+case 1:
+	
+	balanceEnquiry();
+	break;
+case 2:
+	System.out.println("Enter amount to deposit:");
+	double depositAmount=myinput.nextDouble();
+      deposit(depositAmount);
+	break;
+case 3:
+	System.out.println("Enter amount to withdraw:");
+	double withdrawAmount=myinput.nextDouble();
+	withdraw(withdrawAmount);
+	break;
+case 4:
+	System.out.println("Thank You");
+default:
+	System.out.println("Invalid option");
+	break;
+}
+}while(option!=4);
+myinput.close();
+}
+private void balanceEnquiry()
+{
+System.out.println("Your balance is"+bankAccount.showBal());
+}
+private void deposit(double amount)
+{
+bankAccount.deposit(amount);
+}
+
+private void withdraw(double amount)
+{
+bankAccount.withdraw(amount);
+}
+}
+public class Main
+{
+public static void main(String args[])
+{
+	BankAccount account=new BankAccount(2000.00);
+	ATM atm=new ATM(account);
+	atm.run();
+}
+}
